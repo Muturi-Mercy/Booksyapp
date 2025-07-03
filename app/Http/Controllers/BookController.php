@@ -34,8 +34,13 @@ class BookController extends Controller
             'genre'=> 'required',
             'price'=> 'required|numeric',
             'stock_quantity'=> 'required|integer',
-            'cover_image'=> 'nullable|string',
+            'cover_image'=> 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
+
+        if ($request->hasFile('cover_image')){
+            $path = $request->file('cover_image')->store('covers','public');
+            $data['cover_image']=$path;
+        }
 
         $book =Book::create($data);
         return response()->json($book,201);
@@ -79,9 +84,15 @@ class BookController extends Controller
             'genre' => 'sometimes',
             'price' => 'sometimes|numeric',
             'stock_quantity' => 'sometimes|integer',
-            'cover_image' => 'nullable|string',
+            'cover_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
+        if ($request->hasFile('cover_image'))
+        {
+            $path = $request->file('cover_image')->store('covers','public');
+            $data['cover_image']=$path;
+        }
+        
         $book->update($data);
         return response()->json($book);
     
