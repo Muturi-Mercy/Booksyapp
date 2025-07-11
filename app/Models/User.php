@@ -23,6 +23,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'phone',
+        'address'
     ];
 
     /**
@@ -46,5 +48,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    //DEfine relationship
+    public function orders()
+    {
+        return $this->hasMany(Order::class); //One user can place many orders
     }
 }

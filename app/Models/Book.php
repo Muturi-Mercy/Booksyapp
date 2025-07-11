@@ -20,4 +20,9 @@ class Book extends Model
     public function getCoverImageAttribute($value){
         return $value ? asset('storage/' . $value) : null;
     }
+
+    //define relationship
+    public function orders(){
+        return $this->hasMany(Order::class); //One book can appear in many orders.
+    }
 }

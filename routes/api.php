@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\OrderController;
 
 //public routes
 Route::post('/register',[AuthController::class,'register']);
@@ -18,9 +19,13 @@ Route::middleware('auth:sanctum')->group(function()  //verifies the user is auth
     return $request->user();
     });
 
-    //routes accessible by all authenticated users user &admin
+    //routes FOR BOOK accessible by all authenticated users user &admin
     Route::get('/books',[BookController::class,'index']);
     Route::get('/books/{id}',[BookController::class,'show']);
+
+    //routes for orders for all authenticated user
+    Route::get('/orders',[OrderController::class,'index']); //Admins$ user will see all orders
+    Route::post('/orders',[OrderController::class,'store']); //user places a new order for a book
 
     //admin only route
     Route::middleware(IsAdmin::class)->group(function(){  //IsAdmin checks the user's role.
@@ -35,4 +40,7 @@ Route::middleware('auth:sanctum')->group(function()  //verifies the user is auth
     Route::put('/books/{id}',[BookController::class,'update']);
     Route::delete('/books/{id}',[BookController::class,'destroy']);
     });
+
+    //Admin order management
+    Route::put('/orders/{id}/status',[OrderController::class,'updateStatus']); //Allow admin to update the order status
 });
