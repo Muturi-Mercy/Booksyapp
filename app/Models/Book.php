@@ -25,4 +25,13 @@ class Book extends Model
     public function orders(){
         return $this->hasMany(Order::class); //One book can appear in many orders.
     }
+
+    // Automatically add stock_status to JSON output
+    protected $appends = ['stock_status'];
+    
+    //Accessor for computed stock_status
+    public function getStockStatusAttribute()
+    {
+        return $this->stock_quantity <= 5 ? 'low' : 'available';
+    }
 }

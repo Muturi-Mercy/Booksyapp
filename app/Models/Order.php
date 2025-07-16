@@ -10,7 +10,8 @@ class Order extends Model
         'user_id', 
         'book_id',
         'quantity',
-        'status'
+        'status',
+        'payment_status'
     ];
     
     //define relationship

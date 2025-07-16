@@ -97,7 +97,16 @@ class BookController extends Controller
         return response()->json($book);
     
     }
-
+    //low stock monitering
+    public function lowStock(){
+        $lowStockBooks = Book::where('stock_quantity','<=',5)->get();
+        
+        if($lowStockBooks->isEmpty()){
+            return response()->json(['message'=>'All books are well stocked']);
+        }
+        
+        return response()->json(['message'=>'Low stock books','data'=>$lowStockBooks]);
+    }
     /**
      * Remove the specified resource from storage.
      */
