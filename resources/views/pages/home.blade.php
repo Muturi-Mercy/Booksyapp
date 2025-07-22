@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Welcome to Booksy 📖</h1>
-    <p>Discover your next great read.</p>
-    <p><a href="{{ route('books.index') }}">Browse All Books</a></p>
+    @include('partials.hero')
+    @include('partials.booksycollection')
+    @include('partials.newarrivals')
+    @include('partials.bestsellers')
+    @include('partials.offers')
+    @include('partials.popularauthors')
+    @include('partials.testimonials')
 @endsection
 

@@ -30,7 +30,7 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-               <img src="{{ asset('assets/img/logoblue.png') }}" alt="logo" height="200px" width="200px">  
+               <img src="{{ asset('assets/img/logoblue.png') }}" alt="logo" height="155px" width="155px">  
             </div>
 
             <nav class="menu">
@@ -92,9 +92,12 @@
             </nav>
 
             <div class="header-right">
-                <button type="button" class="search-btn icon-btn"><i class="fa-solid fa-search"></i></button>
-                <button type="button" class="cart-bn icon-btn"><i class="fa-solid fa-shopping-cart"></i></button>
-                <button type="button" class="login-btn icon-btn"><i class="fa-solid fa-user" style="color: #080707;"></i></button>
+                {{-- <button type="button" class="search-btn icon-btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></i></button> --}}
+                <button type="button" class="cart-btn icon-btn"><i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000;"></i></button>
+                <a href="{{ route('login') }}" class="btn">
+                <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
+                <span>Login / Register</span>
+                </a>
                 <button type="button" class="open-menu-btn">
                     <span class="line line-1"></span>
                     <span class="line line-2"></span>
@@ -104,175 +107,50 @@
         </div>
     </header>
 
-
-
-<section class="hero">
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {{-- <END HEADER SECTION> --}}
 
+    <main>
+        @yield('content')        
+    </main>
 
 
 
-{{-- <HEADER SECTION> --}}
-    {{-- <nav class="navbar">
-        <div class="container">
-        <div class="nav-logo">
-            
-            <img src="{{ asset('assets/img/blacklogo.png') }}" alt="logo">
-        </div>
 
-        <div class="centre-navbar">
-            
-            <ul class=nav-item>
-                <li>
-                    <a class="nav-link" href="">Home</a>  
-                </li>
 
-                <li>
-                    <a class=nav-link href="">Books</a>
 
-                </li>
 
-                <li>
-                    <a class=nav-link href="">Categories</a>
 
-                    <ul class="drop-down">
-                        <li>
-                            <a class=categories href="">Action
-                        </li>
-                        <li>
-                            <a class=categories href="">Adventure
-                        </li>
-                        <li>
-                            <a class=categories href="">Romance
-                        </li>
-                        <li>
-                            <a class=categories href="">Comic Book
-                        </li>
-                        <li>
-                            <a class=categories href="">Fantasy
-                        </li>
-                        <li>
-                            <a class=categories href="">Historical Fiction
-                        </li>
-                        <li>
-                            <a class=categories href="">Bestsellers
-                        </li>
-                        <li>
-                            <a class=categories href="">Horror
-                        </li>
-                        <li>
-                            <a class=categories href="">Astronomy
-                        </li>
-                        <li>
-                            <a class=categories href="">Geographic
-                        </li>
-                        <li>
-                            <a class=categories href="">Sports
-                        </li>
 
-                        <li>
-                            <a class=categories href="">Literary Fiction
-                        </li>
 
-                        <li>
-                            <a class=categories href="">Economics
-                        </li>
 
-                        <li>
-                            <a class=categories href="">Classic
-                        </li>
-                        <li>
-                            <a class=categories href="">Biography
-                        </li>
-                        <li>
-                            <a class=categories href="">Sports
-                        </li>
-                    </ul>
-                </li>
 
-                <li>
-                    <a class=nav-link href="">Pages</a>
 
-                    <ul class="drop-down">
-                        <li>
-                            <a class=categories href="">Blog</a>
-                        </li>
-                        <li>
-                            <a class=categories href="">About</a>
-                        </li>
-                        <li>
-                            <a class=categories href="">FAQ</a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li>
-                    <a class=nav-link href="">Contact</a>
-                </li>
-          </ul>
-        </div>
-        </div>
 
-        <div class="rightnavbar">
-            <div class="cart-icon">
-                 <a href="#"> <i class="fa-solid fa-bag-shopping fa-2xl"></i></a>
-                
-            </div>
-            <div class=auth>
-                @auth
-                    <a href="{{ url('/') }}">Home</a>
-                    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                        @csrf
-                        <button type="submit" style="border:none; background:none; color:#007bff; cursor:pointer;">Logout</button>
-                    </form>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
-                @endauth
-            </div>
-        </div>
-    </div>
-    </nav> --}}
 
-   
 
-{{-- <END HEADER SECTION> --}}
-    <div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- <div class="container">
        @if (session('success'))
         <div id="flash-success" style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
             {{ session('success') }}
@@ -287,7 +165,7 @@
 
 
         @yield('content')
-    </div>
+    </div> --}}
 
 {{-- <FOOTER SECTION> --}}
     <footer class="footer bg-black">
