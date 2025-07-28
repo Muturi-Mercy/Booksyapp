@@ -10,6 +10,7 @@
     --light-color:#f4f4f6;
     --dark-color:#111;
     --light-grey:#dcdcdc;
+    --white:#fff;
 }
 
 body {
@@ -364,7 +365,7 @@ display: inline-block;
 /*--------------------------------<HERO SECTION>----------------------------------------------- */
 
 .hero-section{
-  background-color: var(--light-color);  
+  background-color: var(--white);  
   min-height:100vh ;
 }
 .hero-section .container{
@@ -417,6 +418,361 @@ display: inline-block;
 }
 /*--------------------------------<END-HERO SECTION>----------------------------------------------- */
 
+
+/*--------------------------------<COLLECTION SECTION>----------------------------------------------- */
+.collection-section{
+    padding: 30px 0;
+    background-color:var(--light-color);
+}
+.collection-section .section-title {
+    padding-top: 8px;
+    width: 100%;
+    padding-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.collection-section .section-separator{
+    width:100%;
+    position: relative;
+    margin: 10px 0;
+}
+.collection-section .section-separator:before{
+    content:'';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top:0;
+    height: 3px;
+    width: 100px;
+    border-radius:3px;
+    background-color:var(--primary-color);
+    margin-left: -25px;   
+}
+.collection-section .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.collection-section .container1{
+    background-color:#023c7a;
+    border-radius: 20px;
+    height: 600px;
+    
+}
+.collection-section .container2{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    gap:20px;
+}
+
+/*--------------------------------<END-COLLECTION SECTION>----------------------------------------------- */
+
+
+/*--------------------------------<Universal-bookcard>----------------------------------------------- */
+
+
+.book-card {
+    background-color:var(--white);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
+    
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.book-card img {
+    max-width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+    padding-left: 55px;
+}
+
+.book-card h5 {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin: 10px 0 5px;
+    font-weight: bolder;
+}
+
+.book-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 10px;
+}
+
+.book-card .btn {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 0.875rem;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.book-card .btn:hover {
+    background-color: #0056b3;
+}
+/*--------------------------------<Universal-bookcard>----------------------------------------------- */
+
+/*--------------------------------<NEW ARRIVAL SECTION>----------------------------------------------- */
+
+
+.new-arrivals-section {
+    padding: 30px 0;
+    background-color:var(--light-grey);
+}
+.new-arrivals-section .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.new-arrivals-section .section-title {
+    padding-top: 8px;
+    width: 100%;
+    padding-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.new-arrivals-section .section-separator{
+    width:100%;
+    position: relative;
+    margin: 10px 0;
+}
+.new-arrivals-section .section-separator:before{
+    content:'';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top:0;
+    height: 3px;
+    width: 100px;
+    border-radius:3px;
+    background-color:var(--primary-color);
+    margin-left: -25px;   
+}
+
+.new-arrivals-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 80px;
+    justify-content: center;
+}
+
+
+
+/*--------------------------------<END-NEW ARRIVAL SECTION>----------------------------------------------- */
+
+
+/*--------------------------------<BEST SELLER SECTION>----------------------------------------------- */
+.bestseller-section{ 
+    background-color:var(--light-color);
+    padding: 30px 0;
+}
+.bestseller-section .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bestseller-section .section-title {
+    padding-top: 8px;
+    width: 100%;
+    padding-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.bestseller-section .section-separator{
+    width:100%;
+    position: relative;
+    margin: 10px 0;
+}
+.bestseller-section .section-separator:before{
+    content:'';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top:0;
+    height: 3px;
+    width: 100px;
+    border-radius:3px;
+    background-color:var(--primary-color);
+    margin-left: -25px;   
+}
+.bestseller-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 60px;
+    justify-content: center;
+}
+.bestseller-section .view{
+    margin-top:30px;
+    margin-bottom: 20px;
+}
+/*--------------------------------<END BEST SELLER SECTION>----------------------------------------------- */
+
+
+
+/*--------------------------------<LIMITED OFFER SECTION>----------------------------------------------- */
+.offers-section {
+    padding: 30px 0;
+    background-color:var(--light-grey);
+}
+.offers-section .container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.offers-section .section-title {
+    padding-top: 8px;
+    width: 100%;
+    padding-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.offers-section .section-separator{
+    width:100%;
+    position: relative;
+    margin: 10px 0;
+}
+.offers-section .section-separator:before{
+    content:'';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top:0;
+    height: 3px;
+    width: 100px;
+    border-radius:3px;
+    background-color:var(--primary-color);
+    margin-left: -25px;   
+}
+
+.offers-section .row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 60px;
+    justify-content: center;
+}
+.offers-section .view{
+    margin-top:30px;
+    margin-bottom: 20px;
+}
+/*--------------------------------<END-LIMITED OFFER SECTION>----------------------------------------------- */
+
+.author-section{
+    background-color:var(--light-color);
+    padding: 30px 0;
+    height: 120vh;
+}
+.author-section .section-title{
+    padding-top: 30px;
+    width: 100%;
+    padding-bottom:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+.author-section .section-separator{
+    width:100%;
+    position: relative;
+    margin: 10px 0;
+}
+.author-section .section-separator:before{
+    content:'';
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top:0;
+    height: 3px;
+    width: 100px;
+    border-radius:3px;
+    background-color:var(--primary-color);
+    margin-left: -25px;   
+}
+.author-section .container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    gap: 40px;
+    padding: 20px;
+}
+.author-section .author-img{
+    width:280px;
+    height: 220px;
+    border-radius: 100%;
+    border: 8px solid var(--light-grey);
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.author-section .author-img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    opacity: 0.8;
+}
+.author-section .authors-avatar h3{
+    color: var(--primary-color);
+    padding-bottom: 5px;
+    font-size: large;
+}
+.author-section .authors-avatar h4{
+    color:#333;
+}
+.author-section .authors-avatar h3,h4{
+    padding-left: 30px;
+}
+/*--------------------------------<POPULAR-AUTHORS SECTION>----------------------------------------------- */
+
+
+
+
+
+
+
+
+
+/*--------------------------------<END-POPULAR-AUTHORS SECTION>----------------------------------------------- */
+
+
 /*--------------------------------<TESTIMONIALS SECTION>----------------------------------------------- */
 
 .testimonials{ 
@@ -429,7 +785,7 @@ display: inline-block;
     align-items: center;
     overflow: hidden;
 }
-.section-title{
+.testimonials .section-title{
     padding-top: 30px;
     width: 100%;
     padding-bottom:30px;
@@ -438,12 +794,12 @@ display: inline-block;
     justify-content: center;
     align-items:center;
 }
-.section-separator{
+.testimonials .section-separator{
     width:100%;
     position: relative;
     margin: 10px 0;
 }
-.section-separator:before{
+.testimonials .section-separator:before{
     content:'';
     position: absolute;
     left: 50%;
@@ -540,105 +896,179 @@ color:var(--primary-color);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*======================================<HOME PAGE SECTION>============================================ */
 
 
 
 
+/*======================================<LOGIN PAGE SECTION>============================================ */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* browsingbooks */
-.book-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+.login-section{
+   height: 80vh; 
 }
-.book-card {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 10px;
+.login-section .container{
+    margin-top: 200px;
+    max-width: 400px; 
+    background: white; 
+    padding: 30px;
+    border-radius: 6px; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.login-section .container h2{
     text-align: center;
-    background: #fff;
+    margin-bottom: 20px;
+    margin-top: 3px;
 }
-.book-cover {
+.login-section .container .error-l{
+    color: red;
+    margin-bottom: 15px;
+}
+.login-section .email-l{
     width: 100%;
-    height: 250px;
-    object-fit: cover;
-    margin-bottom: 1rem;
+    padding: 10px; 
+    margin-bottom: 15px;
+    border: 1px solid #ccc; 
+    border-radius: 4px;
 }
+.login-section .password-l{
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+}
+
+.login-section .button-l{
+    display: inline-block;
+    padding: 13px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.5s;
+    
+}
+.login-section .container p{
+    text-align: center; 
+    margin-top: 15px;
+}
+.login-section .container a{
+    color: var(--primary-color);
+}
+
+/*======================================<END-LOGIN PAGE SECTION>============================================ */
+.reg-section{
+    height: 100vh; 
+}
+
+.reg-section .container{
+    max-width: 400px; 
+    margin-top: 120px;
+    background: white; 
+    padding: 30px; 
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.reg-section .container h2{
+    text-align: center; 
+    margin-top: 2px;
+    margin-bottom: 15px;
+}
+ .reg-section .container .error-r{
+    color: red;
+    margin-bottom: 15px;
+}
+.reg-section .name-r{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.reg-section .email-r{
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.reg-section .password-r{
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+}
+.reg-section .password-cr{
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+}
+
+.reg-section .button-r{
+    display: inline-block;
+    padding: 13px 20px;
+    background: var(--primary-color);
+    color: var(--white);
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.5s;
+}
+.reg-section .container p{
+    text-align: center; 
+    margin-top: 15px;
+}
+.reg-section .container a{
+    color: var(--primary-color);
+}
+
+/*======================================<REGISTRATION PAGE SECTION>============================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*======================================<END-REGISTRATION PAGE SECTION>============================================ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .alert {
     padding: 15px;

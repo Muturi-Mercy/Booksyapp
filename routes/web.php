@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\BookCatalogController;
 use App\Http\Controllers\Frontend\LoginController;
 use App\Http\Controllers\Frontend\RegisterController;
+use App\Http\Controllers\Frontend\HomeController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/', fn () => view('pages.home'))->name('home');
+ Route::get('/', fn () => view('pages.home'))->name('home');
+ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 //AUTH
@@ -26,3 +28,4 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 //BOOKS
 Route::get('/books',[BookCatalogController::class,'index'])->name('books.index');
 Route::get('/books/{id}',[BookCatalogController::class, 'show'])->name('books.show');
+

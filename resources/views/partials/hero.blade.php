@@ -18,7 +18,10 @@
         </div>
 
         <div class="hero-image-wrapper">
-            <img src="{{ asset('assets/img/girl.png') }}" alt="imghero" class="hero-image">
+            <img src="{{ asset('assets/img/book-bg1.png') }}" alt="imghero" class="hero-image">
+            <img src="{{ asset('assets/img/shooting.png') }}" alt="imghero" class="hero-image" width="60px" height="60px">
+            <img src="{{ asset('assets/img/shooting.png') }}" alt="imghero" class="hero-image" width="60px" height="60px">
+
         </div>
         
     </div>

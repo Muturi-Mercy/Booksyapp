@@ -17,4 +17,6 @@ class BookCatalogController extends Controller
         $book =Book::findOrFail($id);
         return view('pages.book_detail',compact('book'));
     }
+   
+
 }
