@@ -36,7 +36,7 @@ class RegisterController extends Controller
         // Auto-login after registration
         Auth::login($user);
 
-        return redirect('/')->with('success', 'Registration successful!');
+        return redirect('dashboard')->with('success', 'Registration successful!');
 
     }
 }

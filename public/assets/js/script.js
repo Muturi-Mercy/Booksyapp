@@ -1,8 +1,5 @@
 
 
-
-
-
 /* -------------------menu----------------------- */
 const menu = document.querySelector(".menu");
 const openMenuBtn = document.querySelector(".open-menu-btn");

@@ -30,7 +30,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('success', 'You are now logged in!');
+            return redirect('dashboard')->with('success', 'You are now logged in!');
 
         }
 
@@ -47,6 +47,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/login');
+        return redirect('/')->with('success', 'You have been logged out.');
+
     }
 }

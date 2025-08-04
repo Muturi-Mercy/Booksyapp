@@ -1,102 +1,50 @@
-<section class="testimonials">
-<h2 class="testimonial-title">WHAT<BR>CUSTOMERS SAY</h2>
-    <div class="testimonial-swiper container">
-        <div>
-            <article class="testimonial-card">
-                <img class="testimonial-img" src="{{ asset('assets/img/man6.jpg') }}" alt="image"></div>
-                <h3 class="testimonial-name">JOHN DOE</h3>
-                <div class="testimonial-rating">
-                    <div class="testimonial-stars">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <h3 class="testimonial-number">5.0</h3>
+{{-- 
+@extends('layouts.app')
+
+@section('content')
+    <section class="reg-section">
+        <div class="container">
+            <h2 class="text-lg"><strong>Create an Account</strong></h2>
+
+            @if ($errors->any())
+                <div class="error-r">
+                    @foreach ($errors->all() as $error)
+                        <p>• {{ $error }}</p>
+                    @endforeach
                 </div>
+            @endif
 
-                <p class="testimonial-description">
-                    Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to 
-                    make a type specimen book.
-                </p>
-            </article>
-
-            <article class="testimonial-card">
-                <img class="testimonial-img" src="{{ asset('assets/img/woman-6.jpg') }}" alt="image"></div>
-                <h3 class="testimonial-name">JOHN DOE</h3>
-                <div class="testimonial-rating">
-                    <div class="testimonial-stars">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <h3 class="testimonial-number">5.0</h3>
+            Display Flash Success Message
+            @if (session('success'))
+                <div id="flash-success">
+                    {{ session('success') }}
                 </div>
+            @endif
 
-                <p class="testimonial-description">
-                    Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to 
-                    make a type specimen book.
-                </p>
-            </article>
 
-            <article class="testimonial-card">
-                <img class="testimonial-img" src="{{ asset('assets/img/man-7.jpg') }}" alt="image"></div>
-                <h3 class="testimonial-name">JOHN DOE</h3>
-                <div class="testimonial-rating">
-                    <div class="testimonial-stars">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <h3 class="testimonial-number">5.0</h3>
-                </div>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
 
-                <p class="testimonial-description">
-                    Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to 
-                    make a type specimen book.
-                </p>
-            </article>
+                <label>Name:</label>
+                <input type="text" name="name" required class="name-r">
 
-            <article class="testimonial-card">
-                <img class="testimonial-img" src="{{ asset('assets/img/woman3.jpg') }}" alt="image"></div>
-                <h3 class="testimonial-name">JOHN DOE</h3>
-                <div class="testimonial-rating">
-                    <div class="testimonial-stars">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <h3 class="testimonial-number">5.0</h3>
-                </div>
+                <label>Email:</label>
+                <input type="email" name="email" required class="email-r">
 
-                <p class="testimonial-description">
-                    Lorem Ipsum is simply dummy text
-                    of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled it to 
-                    make a type specimen book.
-                </p>
-            </article>
+                <label>Password:</label>
+                <input type="password" name="password" required class="password-r">
+
+                <label>Confirm Password:</label>
+                <input type="password" name="password_confirmation" required class="password-cr">
+
+                <button type="submit" class="button-r btn-block">
+                    Register
+                </button>
+            </form>
+
+            <p>
+                Already have an account? <a href="{{ route('login') }}">Login</a>
+            </p>
         </div>
-    </div>
-</section>
+    </section>
+@endsection --}}

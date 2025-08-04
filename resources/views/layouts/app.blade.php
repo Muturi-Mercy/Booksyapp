@@ -31,6 +31,12 @@
 </head>
 <body>
 
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
 {{-- <HEADER SECTION> --}}
     <header class="header">
         <div class="container">
@@ -70,7 +76,7 @@
                         </ul>
                     </li>
 
-                    <li  class="dropdown">
+                    {{-- <li  class="dropdown">
                         <a href="">Dashboard</a> 
                         <i class="fa-solid fa-chevron-down"></i> 
                         <ul class="sub-menu">
@@ -78,7 +84,7 @@
                            <li><a href="#"><span>Orders</span></a></li>
                            <li><a href="#"><span>Wishlist</span></a></li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     <li class="dropdown">
                         <a href="">Pages</a>  
@@ -157,18 +163,16 @@
 
     {{-- <div class="container">
        @if (session('success'))
-        <div id="flash-success" style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
-            {{ session('success') }}
-        </div>
-         @endif
-
-        @if (session('error'))
-            <div id="flash-error" style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
-                {{ session('error') }}
+            <div class="alert alert-success">
+                {{ session('success') }}
             </div>
         @endif
 
-
+        @if (session('error'))
+            <div class="alert .alert-error">
+                {{ session('error') }}
+            </div>
+        @endif
         @yield('content')
     </div> --}}
 

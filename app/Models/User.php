@@ -55,4 +55,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class); //One user can place many orders
     }
+
+    public function cartItems()
+    {
+        return $this->hasMany(CartItem::class);
+    }
+    
 }
