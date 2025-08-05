@@ -52,11 +52,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/orders/store', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
     Route::post('/orders/{id}/cancel', [OrderHistoryController::class, 'cancel'])->name('orders.cancel');
     Route::post('/orders/{id}/reorder', [OrderHistoryController::class, 'reorder'])->name('orders.reorder');
+    Route::post('/orders/place-all', [OrderHistoryController::class, 'placeAll'])->name('orders.placeAll');
 });
 
 //checkout
 Route::middleware('auth')->get('/checkout/{order}', [CheckoutController::class, 'show'])->name('checkout.show');
 Route::middleware('auth')->post('/checkout/{order}', [CheckoutController::class, 'process'])->name('checkout.process');
+Route::middleware('auth')->get('/checkout-all', [CheckoutController::class, 'showAll'])->name('checkout.showAll');
+Route::middleware('auth')->post('/checkout-all', [CheckoutController::class, 'processAll'])->name('checkout.processAll');
 
 //thankyou
 Route::middleware('auth')->get('/thank-you', function () {

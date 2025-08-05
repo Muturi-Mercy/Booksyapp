@@ -2,42 +2,68 @@
 
 @section('content') 
 
-<div style="max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-    <h2 style="margin-bottom: 25px;">🛒 Checkout</h2>
+<section class="checkout-section">
 
-    <h3>{{ $order->book->title }}</h3>
-    <p>Quantity: {{ $order->quantity }}</p>
-    <p>Price per book: ${{ number_format($order->book->price, 2) }}</p>
-    <p><strong>Total: ${{ number_format($order->book->price * $order->quantity, 2) }}</strong></p>
+    <div class="checkout-title">
+        <h2>Booksy</h2>
+        <p>Review your selected books and complete your purchase securely.</p>
+    </div>
 
-    <hr style="margin: 20px 0;">
+    <div class="checkout-content">
 
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+        <h3 class="checkoutmain-title">Checkout</h3>
 
-    @if ($errors->any())
-        <div class="alert alert-error">
-            @foreach ($errors->all() as $error)
-                <p>• {{ $error }}</p>
-            @endforeach
+        <div class="continue">
+            <a href="{{ route('shop.index') }}"><i class="fa-solid fa-circle-arrow-left cicons"></i><span>Continue Shopping</span></a>    
         </div>
-    @endif
 
-    <form method="POST" action="{{ route('checkout.process', $order->id) }}">
-        @csrf
+        <div class="checkout-container">
+            <div class="check-container1">
+                <div class="book-card">
+                    <img src="{{ $order->book->cover_image }}" alt="{{ $order->book->title }}" >  
+                    <h5>{{ $order->book->title }}</h5>
+                    <p><strong>by {{ $order->book->author }}</strong></p>
+                    <p>{{ $order->book->genre }}</p>
+                </div>
+                
+                <div class="checkout-info light-green">
+                    <div class="card-header">
+                        <div class="amount">
+                            <span class="title"><strong>Quantity: </Strong>{{ $order->quantity }}</span>
+                            <span class="title"><strong>Price per book:</strong> KES {{ number_format($order->book->price, 2) }}</span>
+                            <span class="amount-value"><strong>Total: KES {{ number_format($order->book->price * $order->quantity, 2) }}</strong></span>
+                        </div>
+                    </div>
+                </div>
 
-        <label>Shipping Address:</label>
-        <textarea name="address" required style="width: 100%; padding: 10px; margin-bottom: 15px;">{{ old('address', auth()->user()->address) }}</textarea>
+            </div>
+            <hr style="margin: 20px 0;">
+            {{-- @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
-        <label>Phone Number:</label>
-        <input type="text" name="phone" value="{{ old('phone', auth()->user()->phone) }}" required
-               style="width: 100%; padding: 10px; margin-bottom: 20px;">
+            @if ($errors->any())
+                <div class="alert alert-error">
+                    @foreach ($errors->all() as $error)
+                        <p>• {{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif --}}
+                
+            <div class="check-form">
+                <form method="POST" action="{{ route('checkout.process', $order->id) }}">
+                    @csrf
+                    <div class="form-row">
+                        <label class="plabel"><strong>Shipping Address:</strong></label>
+                        <textarea name="address" required class="pinput">{{ old('address', auth()->user()->address) }}</textarea>
+                        <label class="plabel"><strong>Phone Number:</strong></label>
+                        <textarea  name="phone" required class="pinput">{{ old('phone', auth()->user()->phone) }} </textarea>
+                    </div>
+                    <button type="submit" class="pbtn">Pay Now</button>
+                </form>
+            </div>
+        </div>
 
-        <button type="submit"
-                style="width: 100%; background-color: green; color: white; padding: 12px; font-size: 16px; border: none; border-radius: 6px;">
-            ✅ Pay Now
-        </button>
-    </form>
-</div>
+    </div>
+</section>
 @endsection

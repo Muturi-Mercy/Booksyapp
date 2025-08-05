@@ -83,6 +83,25 @@
                             </tr>
                         @endforeach
                     </tbody>
+
+                    @if ($orders->where('payment_status', 'unpaid')->where('status', 'pending')->count() > 0)
+                        <tfoot>
+                            <tr>
+                                <td colspan="3"><strong>Total (KES)</strong></td>
+                                <td><strong>{{ number_format($orders->where('payment_status', 'unpaid')->where('status', 'pending')->sum(function($order) {
+                                    return $order->book->price * $order->quantity;
+                                }), 2) }}</strong></td>
+                                <td colspan="4"></td>
+                                <td>
+                                    <form action="{{ route('orders.placeAll') }}" method="POST" onsubmit="return confirm('Are you sure you want to place all orders?');">
+                                        @csrf
+                                        <button type="submit" class="all-btn">Checkout All</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    @endif
+                    
                 </table>
             @endif
         </div>

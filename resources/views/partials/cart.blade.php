@@ -10,7 +10,7 @@
         <h3 class="cartmain-title">Cart</h3>
         
         <div class="continue">
-                    <a href="{{ route('shop.index') }}"><i class="fa-solid fa-circle-arrow-left cicons"></i><span>Continue Shopping</span></a>    
+            <a href="{{ route('shop.index') }}"><i class="fa-solid fa-circle-arrow-left cicons"></i><span>Continue Shopping</span></a>    
         </div>
     
         <div class="table-container">

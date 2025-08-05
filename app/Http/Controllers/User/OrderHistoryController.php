@@ -97,6 +97,40 @@ public function showUserOrders()
     return view('pages.order', compact('orders', 'recommendations'));
 
 }
+public function placeAll(Request $request)
+{
+    $orders = Order::where('user_id', Auth::id())
+                   ->where('payment_status', 'unpaid')
+                   ->where('status', 'pending')
+                   ->get();
 
+    if ($orders->isEmpty()) {
+        return back()->with('error', 'No unpaid pending orders to place.');
+    }
+
+    $failedOrders = [];
+    foreach ($orders as $order) {
+        $book = Book::find($order->book_id);
+        if (!$book || $book->stock_quantity < $order->quantity) {
+            $failedOrders[] = $book ? $book->title : 'Unknown Book';
+            continue;
+        }
+
+        $book->stock_quantity -= $order->quantity;
+        $book->save();
+
+        $order->update([
+            'status' => 'pending',
+            'payment_status' => 'unpaid',
+        ]);
+    }
+
+    if (!empty($failedOrders)) {
+        return back()->with('error', 'Could not process orders for: ' . implode(', ', $failedOrders));
+    }
+
+    return redirect()->route('checkout.showAll', ['orders' => $orders->pluck('id')->toArray()])
+                    ->with('success', 'All orders ready for checkout.');
+}
 
 }
