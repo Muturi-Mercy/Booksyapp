@@ -72,12 +72,12 @@
                         </a>
                     </li>
 
-                    <li class="nav-link">
+                    {{-- <li class="nav-link">
                         <a href="#">
                             <i class="fa-solid fa-credit-card icon"></i>
                             <span class="text nav-text">Checkout</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li class="nav-link">
                         <a href="{{ route('profile.edit') }}">

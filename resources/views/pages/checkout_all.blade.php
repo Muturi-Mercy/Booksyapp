@@ -1,69 +1,87 @@
 @extends('layouts.user-app')
 
-@section('content')
+@section('content') 
     <section class="checkout-section">
-        <h2>Checkout All Orders</h2>
-        <p>Review and confirm your orders below.</p>
+        <div class="checkout-title">
+            <h2>Booksy</h2>
+            <p>Review your selected books and complete your purchase securely.</p>
+        </div>
 
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+        <div class="checkout-content">
+            <h3 class="checkoutmain-title">Checkout All Orders</h3>
 
-        <form method="POST" action="{{ route('checkout.processAll') }}">
-            @csrf
-            <input type="hidden" name="order_ids" value="{{ implode(',', $orderIds) }}">
-
-            <div class="order-summary">
-                <h3>Order Summary</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Quantity</th>
-                            <th>Total (KES)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($orders as $index => $order)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $order->book->title ?? 'N/A' }}</td>
-                                <td>{{ $order->quantity }}</td>
-                                <td>{{ number_format($order->book->price * $order->quantity, 2) }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3"><strong>Total (KES)</strong></td>
-                            <td><strong>{{ number_format($orders->sum(function($order) {
-                                return $order->book->price * $order->quantity;
-                            }), 2) }}</strong></td>
-                        </tr>
-                    </tfoot>
-                </table>
+            <div class="continue">
+                <a href="{{ route('orders.user') }}"><i class="fa-solid fa-circle-arrow-left cicons"></i><span>Back to Orders</span></a>    
             </div>
 
-            <div class="form-group">
-                <label for="address">Shipping Address</label>
-                <input type="text" name="address" id="address" class="form-control" value="{{ auth()->user()->address ?? '' }}" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="text" name="phone" id="phone" class="form-control" value="{{ auth()->user()->phone ?? '' }}" required>
-            </div>
+            <div class="checkout-container">
+                <div class="check-container1">
+                    @foreach ($orders as $index => $order)
+                        @if ($order->book)
+                            <div class="book-card">
+                                <img src="{{ $order->book->cover_image }}" alt="{{ $order->book->title }}" >  
+                                <h5>{{ $order->book->title }}</h5>
+                                <p><strong>by {{ $order->book->author }}</strong></p>
+                                <p>{{ $order->book->genre }}</p>
+                            </div>
+                            
+                            <div class="checkout-info light-green">
+                                <div class="card-header">
+                                    <div class="amount">
+                                        <span class="title"><strong>Quantity: </strong>{{ $order->quantity }}</span>
+                                        <span class="title"><strong>Price per book: </strong>KES {{ number_format($order->book->price, 2) }}</span>
+                                        <span class="amount-value"><strong>Total: KES {{ number_format($order->book->price * $order->quantity, 2) }}</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (!$loop->last)
+                                <hr style="margin: 20px 0;">
+                            @endif
+                        @else
+                            <p>Book details not available for order #{{ $index + 1 }}.</p>
+                            <div class="checkout-info light-green">
+                                <div class="card-header">
+                                    <div class="amount">
+                                        <span class="title"><strong>Quantity: </strong>{{ $order->quantity }}</span>
+                                        <span class="title"><strong>Price per book: </strong>Not available</span>
+                                        <span class="amount-value"><strong>Total: </strong>Not available</span>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (!$loop->last)
+                                <hr style="margin: 20px 0;">
+                            @endif
+                        @endif
+                    @endforeach
 
-            <button type="submit" class="btn btn-primary">Confirm All Orders</button>
-        </form>
+                    <div class="checkout-info light-green">
+                        <div class="card-header">
+                            <div class="amount">
+                                <span class="amount-value"><strong>Total All Orders: KES {{ number_format($orders->sum(function($order) {
+                                    return $order->book ? $order->book->price * $order->quantity : 0;
+                                }), 2) }}</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <a href="{{ route('orders.user') }}" class="btn btn-secondary">Back to Orders</a>
+                <hr style="margin: 20px 0;">
+
+                <div class="check-form">
+                    <form method="POST" action="{{ route('checkout.processAll') }}">
+                        @csrf
+                        <input type="hidden" name="order_ids" value="{{ implode(',', $orderIds) }}">
+                        <div class="form-row">
+                            <label class="plabel"><strong>Shipping Address:</strong></label>
+                            <textarea name="address" required class="pinput">{{ old('address', auth()->user()->address) }}</textarea>
+                            <label class="plabel"><strong>Phone Number:</strong></label>
+                            <textarea name="phone" required class="pinput">{{ old('phone', auth()->user()->phone) }}</textarea>
+                        </div>
+                        <button type="submit" class="pbtn">Pay Now</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
     </section>
 @endsection
