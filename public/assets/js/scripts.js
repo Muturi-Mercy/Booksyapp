@@ -1,4 +1,4 @@
-// ===========================<< USER DASHBOARD>>========================================================
+// ===========================<< USER & ADMIN DASHBOARD>>========================================================
 const body = document.querySelector("body"),
       sidebar = body.querySelector(".sidebar"),
       toggle = body.querySelector(".toggle"), 

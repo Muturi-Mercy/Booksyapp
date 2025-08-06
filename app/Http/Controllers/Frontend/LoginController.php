@@ -16,29 +16,36 @@ class LoginController extends Controller
     }
 
     // Handle login form submission
-    public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
+   public function login(Request $request)
+{
+    $credentials = $request->only('email', 'password');
 
-        // Validate first
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+    // Validate first
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
 
-        // Attempt login with session-based web guard
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+    // Attempt login
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
 
-            return redirect('dashboard')->with('success', 'You are now logged in!');
+        // Redirect based on role
+        $user = Auth::user();
 
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard')->with('success', 'Welcome Admin!');
+        } else {
+            return redirect()->route('dashboard')->with('success', 'You are now logged in!');
         }
-
-        // Back with error
-        return back()->withErrors([
-            'email' => 'Invalid email or password.',
-        ])->withInput();
     }
+
+    // Back with error
+    return back()->withErrors([
+        'email' => 'Invalid email or password.',
+    ])->withInput();
+}
+
 
     // Handle logout
     public function logout(Request $request)

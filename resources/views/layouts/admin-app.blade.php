@@ -45,44 +45,44 @@
                  </li>
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="{{ route('dashboard') }}">
+                        <a href="{{ route('admin.dashboard') }}">
                             <i class="fa-solid fa-house icon"></i>
                             <span class="text nav-text">Home</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('shop.index') }}">
+                        <a href="{{ route('admin.books.index') }}">
                             <i class="fa-solid fa-book icon"></i>
-                            <span class="text nav-text">Shop</span>
-                        </a>
-                    </li>
-
-                     <li class="nav-link">
-                        <a href="{{ route('cart.index') }}">
-                            <i class="fa-solid fa-cart-shopping fa-xl icon"></i>
-                            <span class="text nav-text">Cart</span>
+                            <span class="text nav-text">Books</span>
                         </a>
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('orders.user') }}">
+                        <a href="{{ route('admin.users.index') }}">
+                            <i class="fa-solid fa-users icon"></i>
+                            <span class="text nav-text">Users</span>
+                        </a>
+                    </li>
+
+                     <li class="nav-link">
+                        <a href="{{ route('admin.orders.index') }}">
                             <i class="fa-solid fa-box icon"></i>
                             <span class="text nav-text">Orders</span>
                         </a>
                     </li>
 
-                    {{-- <li class="nav-link">
-                        <a href="#">
-                            <i class="fa-solid fa-credit-card icon"></i>
-                            <span class="text nav-text">Checkout</span>
+                    <li class="nav-link">
+                        <a href="{{ route('admin.lowstock') }}">
+                            <i class="fa-solid fa-triangle-exclamation icon"></i>
+                            <span class="text nav-text">Low Stock</span>
                         </a>
-                    </li> --}}
+                    </li>
 
                     <li class="nav-link">
-                        <a href="{{ route('profile.edit') }}">
-                            <i class="fa-solid fa-user icon"></i>
-                            <span class="text nav-text">My Profile</span>
+                        <a href="{{ route('admin.revenue.index') }}">
+                            <i class="fa-solid fa-chart-line icon"></i>
+                            <span class="text nav-text">Revenue</span>
                         </a>
                     </li>
 
@@ -90,12 +90,6 @@
             </div>
 
             <div class="bottom-content">
-                {{-- <li class="">
-                    <a href="#">
-                        <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
-                        <span class="text nav-text">Logout</span>
-                    </a>
-                </li> --}}
 
                 <li class="nav-link">
                     <form method="POST" action="{{ route('logout') }}">
@@ -106,7 +100,6 @@
                         </button>
                     </form>
                 </li>
-
 
                 <li class="mode">
                    <div class="moon-sun">
@@ -120,6 +113,7 @@
                     <span class="switch"></span>
                    </div>
                 </li>
+                
             </div>
         </div>
     </nav>
@@ -209,6 +203,7 @@
             e.preventDefault(); // Cancel form submission
         }
     });
+
 
 </script>
 

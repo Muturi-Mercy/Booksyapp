@@ -125,6 +125,8 @@ header .image-text .header-text{
 }
 .header-text .name{
     font-weight: 600;
+    font-size: 30px;
+    color: var(--primary-color);
 }
 .header-text .profession{
     margin-top: -2px;
@@ -149,7 +151,7 @@ header .image-text .header-text{
    transform: translateY(-50%); 
 }
 body.dark .sidebar header .toggle{
-    /* transform: rotate(180deg); */
+    transform: rotate(180deg);
     color: var(--text-color);
 }
 .sidebar .menu{
@@ -920,7 +922,7 @@ background:var(--sidebar-color);
     margin-right: auto;
     margin-top: auto;
 }
-.checkout-title{
+.checkout-title h2{
     font-size: 30px;
     font-weight: 600;
     padding: 8px;
@@ -1068,15 +1070,159 @@ background:var(--sidebar-color);
 } 
 /*====================================<THANK YOU SECTION>======================================= */
 
-/* .dashboard-section .container{
-background:red; 
-padding: 30px; 
-border-radius: 8px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
-max-width: 900px;
-margin: auto;
-} */
 
 
 
+/* ###################################### <<ADMIN PAGES>> ##################################################### */
 
+/*====================================<BOOK LISTING SECTION>======================================= */
+.listing-section{
+    padding: 0.8rem;
+}
+.listing-title{
+    background: var(--sidebar-color);
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 6px;
+    max-width: 1100px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.listing-title h2{
+    font-size: 30px;
+    font-weight: 600;
+    padding: 8px;
+    color: var(--primary-color);
+}
+.listing-title p{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 6px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+.edit-btn{
+    color:#28a745 ;
+    display:inline;
+}
+.delete-btn{
+    color: red;
+    display:inline;
+}
+
+/*====================================<BOOK LISTING SECTION>======================================= */
+
+/*====================================<ADD BOOK SECTION>======================================= */
+.addbook-section{
+    padding: 0.8rem;
+}
+.addbook-title{
+    background: var(--sidebar-color);
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 6px;
+    max-width: 1100px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.addbook-title h2{
+    font-size: 30px;
+    font-weight: 600;
+    padding: 8px;
+    color: var(--primary-color);
+}
+.addbook-title p{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 6px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+/*====================================<ADD BOOK SECTION>======================================= */
+
+/*====================================<ORDER LISTING SECTION>======================================= */
+.orderlisting-section{
+    padding: 0.8rem;
+}
+.orderlisting-title{
+    background: var(--sidebar-color);
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 6px;
+    max-width: 1100px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.orderlisting-title h2{
+    font-size: 30px;
+    font-weight: 600;
+    padding: 8px;
+    color: var(--primary-color);
+}
+.orderlisting-title p{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 6px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+/*====================================<ORDER LISTING SECTION>======================================= */
+
+/*====================================<LOW STOCK SECTION>======================================= */
+.lowstock-section{
+    padding: 0.8rem;
+}
+.lowstock-title{
+    background: var(--sidebar-color);
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 6px;
+    max-width: 1100px;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.lowstock-title h2{
+    font-size: 30px;
+    font-weight: 600;
+    padding: 8px;
+    color: var(--primary-color);
+}
+.lowstock-title p{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 0px 6px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+/*====================================<LOW STOCK SECTION>======================================= */
+
+/*====================================<USER PROFILE SECTION>======================================= */
+.user-profile{
+    margin-top: 10px;
+}
+.user-profile h3,p{
+    padding-bottom:8px ;
+    color: var(--primary-color);
+}
+.user-profile span{
+    color: var(--dark-color);
+    font-weight: 600;
+    
+}
+/*====================================<USER PROFILE SECTION>======================================= */
