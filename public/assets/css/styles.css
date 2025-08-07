@@ -578,6 +578,7 @@ main {
 .book-card img {
     max-width: 100%;
     height: 220px;
+    width: 220px;
     object-fit: cover;
     border-radius: 5px;
     padding-left: 55px;
