@@ -117,7 +117,7 @@ php artisan serve
 
 ---
 
-## 🔐 Default Admin Credentials
+## Default Admin Credentials
 
 The seeder creates a default admin user:
 
@@ -143,7 +143,7 @@ This helps avoid overselling and improves stock management.
 
 ---
 
-## 🧪 API Testing 
+##  API Testing 
 
 RESTful APIs are also enabled, you can test:
 
@@ -190,7 +190,7 @@ Pull requests are welcome! If you'd like to contribute, fork the repo and submit
 
 ---
 
-## 🙌 Acknowledgments
+##  Acknowledgments
 
 * Laravel Documentation
 * Open Source Libraries (ApexCharts, Chart.js)
