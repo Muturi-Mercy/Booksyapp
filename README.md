@@ -1,61 +1,199 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+#  Booksy – Laravel Online Bookstore
 
-## About Laravel
+Booksy is a full-featured Laravel 12 web application for managing an online bookstore. It provides user-friendly interfaces for both **customers** and **administrators**. Customers can browse books, add them to a cart, place orders, and track their purchases. Administrators can manage books, orders, users, monitor stock levels, and view revenue analytics — all from a centralized admin dashboard.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+##  Project Purpose
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Booksy was built to demonstrate the development of a real-world, role-based Laravel application with CRUD operations, authentication, cart/order logic, and admin reporting. 
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+##  Features & Functionalities
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+###  User Features
+- Register, Login, Logout
+- Browse books by genre or category
+- View book details (title, author, price, genre)
+- Add to cart / update quantity / remove from cart
+- Place orders directly from the cart
+- View order history and statuses
+- View book recommendations
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+###  Cart System
+- Cart view includes: book image, title, price, quantity, subtotal
+- Auto calculation of total price
+- Empty cart handling and dynamic updates
 
-## Laravel Sponsors
+###  Order Management
+- Users can place orders for books
+- Each order reduces book stock automatically
+- Admins can update order statuses:
+- Pending , Cancelled, Completed, Paid
+- Order history is available per user
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+###  Authentication & Roles
+- Custom login and registration forms
+- Session-based authentication
+- Role-based access control (`admin` and `user`)
+- Protected admin routes
 
-### Premium Partners
+###  Admin Panel
+- Dashboard summary: orders, users, books, revenue
+- Book management (CRUD +cover-image upload)
+- Order approval/cancellation/payment marking
+- User list with delete option
+- Revenue tracking page with charts
+- Low stock alert section for quick restock action
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+##  Technologies Used
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Backend
+- **PHP 8.x**
+- **Laravel 12**
+- **PostgreSQL**
+- **Eloquent ORM**
+- **Seeder/Factory system**
+- **Docker + Docker Compose**
 
-## Code of Conduct
+###  Frontend
+- **HTML5, CSS3**
+- **Laravel Blade Files**
+- **Chart.js / ApexCharts** (for admin analytics)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+###  Development Tools
+- **VS Code**
+- **Git & GitHub**
+- **Postman** for API testing
+- **pgAdmin** for database access
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+##  Setup Instructions
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+###  Prerequisites
+- PHP >= 8.x
+- Composer
+- Docker & Docker Compose
+- PostgreSQL
+
+### Installation Steps
+
+1. **Clone the repository**
+
+git clone https://github.com/Muturi-Mercy/Booksyapp.git
+cd booksy
+
+
+2. **Configure environment**
+
+cp .env.example .env
+docker-compose exec booksyapp bash
+php artisan key:generate
+
+3. **Start Docker containers**
+
+docker-compose up -d
+
+4. **Run migrations and seeders**
+5. 
+docker-compose exec booksyapp bash
+php artisan migrate --seed
+
+6. **Serve the application**
+7. 
+docker-compose exec booksyapp bash
+php artisan serve
+
+6. **Access the app**
+
+* Frontend: `http://localhost:8890`
+* Admin Panel: `/admin` (secured by role)
+
+---
+
+## Default Admin Credentials
+
+The seeder creates a default admin user:
+
+* **Email**: `adminbooksy@gmail.com`
+* **Password**: `booksycrud`
+
+> You can change these in `DatabaseSeeder.php`.
+
+
+##  Revenue & Analytics
+
+* View revenue charts by month
+* Admin panel uses Chart.js or ApexCharts
+* Displays pending vs paid orders
+* Helps admins make inventory and pricing decisions
+
+---
+
+##  Low Stock Alerts
+
+Admins can see a list of books where the stock level is below a defined threshold (e.g., 5 units).
+This helps avoid overselling and improves stock management.
+
+---
+
+##  API Testing 
+
+RESTful APIs are also enabled, you can test:
+
+* `GET /api/books`
+* `POST /api/orders`
+* `GET /api/user/orders`
+
+Use Postman to authenticate and test these endpoints.
+
+---
+
+## Image Licensing Notice
+
+All book cover images used in this project are either:
+
+* Placeholder images from public sources like or sourced from Pixabay
+* Custom generic covers created for demo use
+
+>  **No copyrighted book covers or logos** are included.
+
+Book titles and author names are used for educational/demonstration purposes only.
+
+---
+
+##  Future Improvements
+
+* Payment gateway integration (PayPal, Stripe, or M-Pesa)
+* Email notifications for order status
+* Search & filter options
+* Responsive UI improvements
+* Admin activity logs
+
+---
+
+##  Contributing
+
+Pull requests are welcome! If you'd like to contribute, fork the repo and submit a PR.
+
+1. Fork this repository
+2. Create your feature branch 
+3. Commit your changes 
+4. Push to the branch 
+5. Open a pull request
+
+---
+
+##  Acknowledgments
+
+* Laravel Documentation
+* Open Source Libraries (ApexCharts, Chart.js)
+* Placeholder image services
+
+
