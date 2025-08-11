@@ -31,12 +31,20 @@
 </head>
 <body>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    <div class="container">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
 
+        @if (session('error'))
+            <div class="alert .alert-error">
+                {{ session('error') }}
+            </div>
+        @endif
+    </div>    
+ 
 {{-- <HEADER SECTION> --}}
     <header class="header">
         <div class="container">
@@ -76,15 +84,38 @@
                         </ul>
                     </li>
 
-                    {{-- <li  class="dropdown">
-                        <a href="">Dashboard</a> 
+                    <li  class="dropdown">
+                        <a href="{{ route('homedashboard') }}">Dashboard</a> 
                         <i class="fa-solid fa-chevron-down"></i> 
                         <ul class="sub-menu">
-                           <li><a href="#"><span>User Profile</span></a></li>
-                           <li><a href="#"><span>Orders</span></a></li>
-                           <li><a href="#"><span>Wishlist</span></a></li>
+                           <li>
+                                <a href="
+                                    @if(Auth::check()) 
+                                        {{ route('profile.edit') }} 
+                                    @else 
+                                        {{ route('login') }} 
+                                    @endif
+                                ">
+                                    <span>My Profile</span>
+                                </a>
+                           </li>
+                           <li>
+                                <a href="
+                                    @if(Auth::check()) 
+                                        @if(Auth::user()->is_admin) 
+                                            {{ route('admin.orders.index') }} 
+                                        @else 
+                                            {{ route('orders.user') }} 
+                                        @endif
+                                    @else 
+                                        {{ route('login') }} 
+                                    @endif
+                                ">
+                                    <span>Orders</span>
+                                </a>
+                           </li>
                         </ul>
-                    </li> --}}
+                    </li>
 
                     <li class="dropdown">
                         <a href="">Pages</a>  
@@ -104,11 +135,29 @@
 
             <div class="header-right">
                 {{-- <button type="button" class="search-btn icon-btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></i></button> --}}
-                <button type="button" class="cart-btn icon-btn"><i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000;"></i></button>
-                <a href="{{ route('login') }}" class="btn">
-                <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
-                <span>Login / Register</span>
+                <a href="{{ auth()->check() ? route('cart.index') : route('login') }}" class="cart-btn icon-btn">
+                    <i class="fa-solid fa-cart-shopping fa-xl" style="color: #000000;"></i>
                 </a>
+
+                @if(Auth::check())
+                    @if(Auth::user()->role === 'admin')
+                        <a href="{{ route('admin.dashboard') }}" class="btn">
+                            <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
+                            <span>Login/Register</span>
+                        </a>
+                    @else
+                        <a href="{{ route('dashboard') }}" class="btn">
+                            <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
+                            <span>Login/Register</span>
+                        </a>
+                    @endif
+                @else
+                    <a href="{{ route('login') }}" class="btn">
+                        <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
+                        <span>Login/Register</span>
+                    </a>
+                @endif
+
                 <button type="button" class="open-menu-btn">
                     <span class="line line-1"></span>
                     <span class="line line-2"></span>
@@ -119,6 +168,9 @@
     </header>
 
 {{-- <END HEADER SECTION> --}}
+
+    
+
 
     <main>
         @yield('content')        
@@ -263,22 +315,16 @@
 
 
 
-  <script>
-    // Auto-dismiss success message
-    const successAlert = document.getElementById('flash-success');
-    const errorAlert = document.getElementById('flash-error');
-
-    if (successAlert) {
-        setTimeout(() => {
-            successAlert.style.display = 'none';
-        }, 5000); // 5000ms = 5 seconds
-    }
-
-    if (errorAlert) {
-        setTimeout(() => {
-            errorAlert.style.display = 'none';
-        }, 5000);
-    }
+<script>
+    // Auto-hide alert after 3 seconds
+    setTimeout(function () {
+        const alert = document.querySelector('.alert-success');
+        if (alert) {
+            alert.style.transition = 'opacity 0.5s ease';
+            alert.style.opacity = '0';
+            setTimeout(() => alert.remove(), 500); // Remove after fade out
+        }
+    }, 3000); // 3 seconds
 </script>
 
            {{-- swiper js --}}

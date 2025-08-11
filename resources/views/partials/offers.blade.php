@@ -14,7 +14,20 @@
                         <p>by {{ $book->author }}</p>
                         <p><strong>KES {{ number_format($book->price, 2) }}</strong></p>
                         <p>{{ $book->genre }}</p>
-                        <a href="#" class="btn btn-primary"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i><span> Add to cart</span></a>
+                         @auth
+                            <!-- If logged in -->
+                            <form method="POST" action="{{ route('cart.add', $book->id) }}" >
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <button class="btn btn-primary"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i><span>Add to Cart</span></button>
+                            </form>
+                        @else
+                            <!-- If NOT logged in -->
+                            <a href="{{ route('login') }}" class="btn btn-primary"><i class="fa-solid fa-cart-shopping fa-lg" style="color: #ffffff;"></i>
+                                Add to Cart
+                            </a>
+                        @endauth
+                        
                     </div>
             @endforeach
         </div>

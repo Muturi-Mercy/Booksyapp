@@ -46,8 +46,8 @@
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="{{ route('dashboard') }}">
-                            <i class="fa-solid fa-house icon"></i>
-                            <span class="text nav-text">Home</span>
+                           <i class="fas fa-layer-group icon"></i>
+                            <span class="text nav-text">Dashboard</span>
                         </a>
                     </li>
 
@@ -90,12 +90,12 @@
             </div>
 
             <div class="bottom-content">
-                {{-- <li class="">
-                    <a href="#">
-                        <i class="fa-solid fa-arrow-right-to-bracket icon"></i>
-                        <span class="text nav-text">Logout</span>
+                <li class="">
+                    <a href="{{ route('home') }}">
+                        <i class="fa-solid fa-house icon"></i>
+                        <span class="text nav-text">Homepage</span>
                     </a>
-                </li> --}}
+                </li>
 
                 <li class="nav-link">
                     <form method="POST" action="{{ route('logout') }}">
@@ -140,57 +140,10 @@
         {{-- @yield('content') --}}
     </div>
 
+    <main>
+        @yield('content')        
+    </main>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- <main>
-    @yield('content')        
- </main>
 <script>
     // Auto-hide alert after 3 seconds
     setTimeout(function () {

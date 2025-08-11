@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Frontend\BookCatalogController;
 use App\Http\Controllers\Frontend\LoginController;
 use App\Http\Controllers\Frontend\RegisterController;
@@ -27,6 +28,16 @@ use App\Http\Controllers\Admin\AdminRevenueController;
 
 
 //AUTH
+
+Route::get('/login', function () {
+    if (Auth::check()) {
+        return Auth::user()->is_admin 
+            ? redirect()->route('admin.dashboard') 
+            : redirect()->route('dashboard');
+    }
+    return view('auth.login');
+})->name('login');
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
@@ -50,16 +61,43 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin/books')->group(function (
 });
 
 //Dashboard
+Route::middleware('auth')->get('/homedashboard', function () {
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        return redirect()->route('admin.dashboard');
+    }
+    return redirect()->route('dashboard');
+})->name('homedashboard');
+
 Route::middleware('auth')->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::middleware(['auth', 'is_admin'])->get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
 //user profile
+Route::get('/profile', function () {
+    if (Auth::check()) {
+        return redirect()->route('profile.edit'); 
+    }
+    return redirect()->route('login');
+})->name('myprofile');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 //orders
+Route::get('/my-orders', function () {
+    if (!Auth::check()) {
+        return redirect()->route('login');
+    }
+
+    if (Auth::user()->role === 'admin') {
+        return redirect()->route('admin.orders.index');
+    } else {
+        return redirect()->route('orders.user');
+    }
+})->name('orders');
+
 Route::middleware('auth')->get('/my-orders', [OrderHistoryController::class, 'index'])->name('orders.user');
 
 Route::middleware('auth')->group(function () {
