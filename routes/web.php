@@ -49,7 +49,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //BOOKS
 Route::get('/books',[BookCatalogController::class,'index'])->name('books.index');
-Route::get('/books/{id}',[BookCatalogController::class, 'show'])->name('books.show');
+// Route::get('/books/{id}',[BookCatalogController::class, 'show'])->name('books.show');
+Route::get('/books/{genre?}', [BookCatalogController::class, 'shop'])->name('shop');
 
 // -----------Admin-------------
 Route::middleware(['auth', 'is_admin'])->prefix('admin/books')->group(function () {

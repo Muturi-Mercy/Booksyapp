@@ -31,19 +31,7 @@
 </head>
 <body>
 
-    <div class="container">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert alert-error">
-                {{ session('error') }}
-            </div>
-        @endif
-    </div>    
+    
  
 {{-- <HEADER SECTION> --}}
     <header class="header">
@@ -75,12 +63,21 @@
                     </li>
 
                     <li  class="dropdown">
-                        <a href="">Categories</a> 
+                        <a href="">Genres</a> 
                         <i class="fa-solid fa-chevron-down"></i> 
-                        <ul class="sub-menu">
-                           <li><a href="#"><span>Action</span></a></li>
-                           <li><a href="#"><span>Adventure</span></a></li>
-                           <li><a href="#"><span>Romance</span></a></li>
+                        <ul class="sub-menu" style="display:grid; grid-template-columns: 1fr 1fr; padding-right:20px;">
+                           <li><a href="{{ route('shop', 'Action') }}"><span>Action</span></a></li>
+                           <li><a href="{{ route('shop', 'Adventure') }}"><span>Adventure</span></a></li>
+                           <li><a href="{{ route('shop', 'Biography') }}"><span>Biography</span></a></li>
+                           <li><a href="{{ route('shop', 'Classic') }}"><span>Classic</span></a></li>
+                           <li><a href="{{ route('shop', 'Comic') }}"><span>Comic</span></a></li>
+                           <li><a href="{{ route('shop', 'Fantasy') }}"><span>Fantasy</span></a></li>
+                           <li><a href="{{ route('shop', 'Literary Fiction') }}"><span>Literary Fiction</span></a></li>
+                           <li><a href="{{ route('shop', 'Historical Fiction') }}"><span>Historical Fiction</span></a></li>
+                           <li><a href="{{ route('shop', 'Horror') }}"><span>Horror</span></a></li>
+                           <li><a href="{{ route('shop', 'Geography') }}"><span>Geography</span></a></li>
+                           <li><a href="{{ route('shop', 'Romance') }}"><span>Romance</span></a></li>
+                           <li><a href="{{ route('shop', 'Sports') }}"><span>Sports</span></a></li>
                         </ul>
                     </li>
 
@@ -179,54 +176,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- <div class="container">
-       @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert .alert-error">
-                {{ session('error') }}
-            </div>
-        @endif
-        @yield('content')
-    </div> --}}
 
 {{-- <FOOTER SECTION> --}}
     <footer class="footer bg-black">

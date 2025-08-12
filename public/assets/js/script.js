@@ -96,3 +96,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+
+document.querySelectorAll('.sub-menu a').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        document.body.classList.add('blur-active');
+    });
+    link.addEventListener('mouseleave', () => {
+        document.body.classList.remove('blur-active');
+    });
+});

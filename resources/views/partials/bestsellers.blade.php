@@ -33,7 +33,7 @@
         </div>
 
         <div class="view">
-        <a href="#" class="btn btn-primary">View All</a>
+        <a href="{{ route('books.index') }}" class="btn btn-primary">View All</a>
         </div>
 
     </div>

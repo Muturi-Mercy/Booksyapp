@@ -1,4 +1,4 @@
-<section class="new-arrivals-section">
+<section id="new-arrivals" class="new-arrivals-section">
     <div class="container">
         <div class="section-title">
             <h2 class="text-xxl">New Arrivals</h2>
