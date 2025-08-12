@@ -39,7 +39,7 @@
         @endif
 
         @if (session('error'))
-            <div class="alert .alert-error">
+            <div class="alert alert-error">
                 {{ session('error') }}
             </div>
         @endif
@@ -252,24 +252,24 @@
                     <li><a href="#">About Us</a></li>
                     <li><a href="{{ route('contact.show') }}">Contact us </a></li>
                     <li><a href="#">Blog</a></li>
-                    <li><a href="#">Author</a></li>
-                    <li><a href="#">Books</a></li>
+                    {{-- <li><a href="#">Author</a></li> --}}
+                    <li><a href="#">FAQ</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Services</h4>
                     <ul>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Order</a></li>
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="#">Checkout</a></li>
-                    <li><a href="#">Wishlist</a></li>
+                    <li><a href="{{ route('books.index') }}">Shop</a></li>
+                    <li><a href="{{ auth()->check() ? route('cart.index') : route('login') }}">Cart</a></li>
+                    <li><a href="{{ auth()->check() ? route('orders.user') : route('login') }}">Order</a></li>
+                    <li><a href="{{ auth()->check() ? route('checkout.showAll') : route('login') }}">Checkout</a></li>
+                    {{-- <li><a href="#">Wishlist</a></li> --}}
                     </ul>
                 </div>
                 <div>
                     <h4>Contact</h4>
                     <ul>
-                    <li><a href="#">hello@booksyapp.com</a></li>
+                    <li><a href="{{ route('contact.show') }}">hello@booksyapp.com</a></li>
                     </ul>
                 </div>
             </div>
@@ -325,6 +325,16 @@
             setTimeout(() => alert.remove(), 500); // Remove after fade out
         }
     }, 3000); // 3 seconds
+
+     setTimeout(function () {
+        const alert = document.querySelector('.alert-error');
+        if (alert) {
+            alert.style.transition = 'opacity 0.5s ease';
+            alert.style.opacity = '0';
+            setTimeout(() => alert.remove(), 500); // Remove after fade out
+        }
+    }, 3000); // 3 seconds
+
 </script>
 
            {{-- swiper js --}}

@@ -12,7 +12,7 @@
             </p>
 
             <div class="hero-button">
-                <a href="#" class="h-btn shop-now">SHOP NOW</a> 
+                <a href="{{ route('books.index') }}" class="h-btn shop-now">SHOP NOW</a> 
                 <a href="#" class="h-btn tour">TAKE A TOUR</a>  
             </div>
         </div>

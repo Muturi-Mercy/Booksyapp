@@ -133,7 +133,7 @@
         @endif
 
         @if (session('error'))
-            <div class="alert .alert-error">
+            <div class="alert alert-error">
                 {{ session('error') }}
             </div>
         @endif
@@ -148,6 +148,15 @@
     // Auto-hide alert after 3 seconds
     setTimeout(function () {
         const alert = document.querySelector('.alert-success');
+        if (alert) {
+            alert.style.transition = 'opacity 0.5s ease';
+            alert.style.opacity = '0';
+            setTimeout(() => alert.remove(), 500); // Remove after fade out
+        }
+    }, 3000); // 3 seconds
+
+     setTimeout(function () {
+        const alert = document.querySelector('.alert-error');
         if (alert) {
             alert.style.transition = 'opacity 0.5s ease';
             alert.style.opacity = '0';
