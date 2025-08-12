@@ -26,7 +26,7 @@ class AdminUserController extends Controller
 
         public function show($id)
     {
-        $user = User::with('orders.book')->findOrFail($id); 
+        $user = User::with('orders.book', 'contacts')->findOrFail($id); 
         return view('admin.user_profile', compact('user'));
     }
 }

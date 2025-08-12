@@ -61,4 +61,9 @@ class User extends Authenticatable
         return $this->hasMany(CartItem::class);
     }
     
+        public function contacts()
+    {
+        return $this->hasMany(ContactMessage::class);
+    }
+
 }

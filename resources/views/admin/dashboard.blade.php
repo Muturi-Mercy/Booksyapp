@@ -7,6 +7,7 @@
         'totalOrders' => $totalOrders,
         'pendingOrders' =>$pendingOrders,
         'totalRevenue'=> $totalRevenue,
-        'lowStock'=>$lowStock
+        'lowStock'=>$lowStock,
+        'messages'=>$messages
     ])
 @endsection

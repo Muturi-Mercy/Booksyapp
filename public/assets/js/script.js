@@ -55,4 +55,44 @@ const swiperTestimonial = new Swiper('.testimonial-swiper', {
   }
 });
 
+/* -------------------SHOP Books----------------------- */
+document.addEventListener('DOMContentLoaded', function() {
+    const allBooks = Array.from(document.querySelectorAll('#all-books .book-card'));
+    const wrapper = document.querySelector('.books-swiper .swiper-wrapper');
+
+    // Group books into batches of 15 per slide
+    for (let i = 0; i < allBooks.length; i += 15) {
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide books-slide-grid';
+
+        // Container inside slide to hold the grid
+        const gridContainer = document.createElement('div');
+        gridContainer.className = 'books-grid';
+
+        allBooks.slice(i, i + 15).forEach(book => {
+            gridContainer.appendChild(book);
+        });
+
+        slide.appendChild(gridContainer);
+        wrapper.appendChild(slide);
+    }
+
+    // Initialize Swiper
+    var swiper = new Swiper('.books-swiper', {
+    slidesPerView: 1, // One "grid" slide at a time
+    grid: {
+        rows: 1 // One grid per slide, but each slide contains 15 books via Blade chunk
+    },
+    spaceBetween: 20,
+    navigation: {
+        nextEl: '.books-swiper-button-next',
+        prevEl: '.books-swiper-button-prev',
+    },
+    pagination: {
+        el: '.books-swiper-pagination',
+        clickable: true,
+    },
+});
+
+});
 

@@ -81,6 +81,38 @@
 
             </div>
         </div>
+
+        <div class="card-container">
+
+            <h3 class="main-title">Today's Messages</h3>
+
+            <div class="table-container">
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Sent At</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach($messages as $msg)
+                            <tr>
+                                <td>{{ $msg->name }}</td>
+                                <td>{{ $msg->email }}</td>
+                                <td>{{ $msg->message }}</td>
+                                <td>{{ $msg->created_at->format('Y-m-d H:i') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
                 
     </section>
 @endsection

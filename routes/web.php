@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\BookAdminController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminRevenueController;
+use App\Http\Controllers\ContactController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -108,6 +109,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/orders/place-all', [OrderHistoryController::class, 'placeAll'])->name('orders.placeAll');
 });
 
+//Contact
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.show');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+
+
 // -----------Admin-------------
 
 Route::middleware(['auth', 'is_admin'])->prefix('admin/orders')->group(function () {
@@ -162,3 +169,6 @@ Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
 Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
     Route::get('/revenue', [AdminRevenueController::class, 'index'])->name('admin.revenue.index');
 });
+
+
+

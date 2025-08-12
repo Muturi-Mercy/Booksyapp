@@ -14,7 +14,7 @@
                      {{-- remixicons --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
                 {{-- swipercss --}}
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
     <link
       rel="stylesheet"
@@ -61,17 +61,17 @@
                </div>
                <ul>
                     <li>
-                    <a href="">Home</a>  
+                    <a href="{{ route('home') }}">Home</a>  
                     </li>
 
                     <li class="dropdown">
-                        <a href="">Shop</a> 
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <a href="{{ route('books.index') }}">Shop</a> 
+                        {{-- <i class="fa-solid fa-chevron-down"></i>
                         <ul class="sub-menu">
                            <li><a href="#"><span>Books</span></a></li>
                            <li><a href="#"><span>Cart</span></a></li>
                            <li><a href="#"><span>Checkout</span></a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
 
                     <li  class="dropdown">
@@ -128,10 +128,10 @@
                     </li>
                 
                     <li>
-                        <a href="">Contact</a>  
+                        <a href="{{ route('contact.show') }}">Contact</a>  
                     </li>
                </ul>
-            </nav>
+            </nav> 
 
             <div class="header-right">
                 {{-- <button type="button" class="search-btn icon-btn"><i class="fa-solid fa-magnifying-glass fa-xl" style="color: #000000;"></i></i></button> --}}
@@ -250,7 +250,7 @@
                     <h4>Company</h4>
                     <ul>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact us </a></li>
+                    <li><a href="{{ route('contact.show') }}">Contact us </a></li>
                     <li><a href="#">Blog</a></li>
                     <li><a href="#">Author</a></li>
                     <li><a href="#">Books</a></li>
@@ -330,6 +330,7 @@
            {{-- swiper js --}}
 
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 <script src="{{ asset('assets/js/script.js') }}"></script>
 
 @yield('scripts')

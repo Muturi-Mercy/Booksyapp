@@ -81,5 +81,41 @@
         </div>
 
     </div>
+
+    <div class="tabular-wrapper">
+
+        <h3 class="cartmain-title">Messages</h3>
+
+        @if($user->contacts->count() > 0)
+            <div class="table-container">
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sender Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Sent On</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($user->contacts as $msg)
+                            <tr>
+                                <td>#{{ $msg->id }}</td>
+                                <td>{{ $msg->name }}</td>
+                                <td>{{ $msg->email }}</td>
+                                <td>{{ $msg->message }}</td>
+                                <td>{{ $msg->created_at->format('M d, Y H:i') }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @else
+            <p>No messages from this user.</p>
+        @endif
+
+    </div>
+    
 </section>
 @endsection
