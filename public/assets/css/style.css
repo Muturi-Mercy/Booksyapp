@@ -1082,8 +1082,8 @@ color:var(--primary-color);
 .contact-section{
     position: relative;
     min-height: 100vh;
-    margin-top: 40px;
-    padding: 50px 100px;
+    margin:auto;
+    padding: 40px 100px;
     display: flex;
     justify-content: center;
     align-items: center;
