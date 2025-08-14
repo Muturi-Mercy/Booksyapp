@@ -91,12 +91,12 @@
 
             <div class="bottom-content">
 
-                <li class="">
+                {{-- <li class="">
                     <a href="{{ route('home') }}">
                         <i class="fa-solid fa-house icon"></i>
                         <span class="text nav-text">Homepage</span>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-link">
                     <form method="POST" action="{{ route('logout') }}">
